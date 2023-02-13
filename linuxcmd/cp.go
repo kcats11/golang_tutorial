@@ -1,11 +1,10 @@
-package main
+package linuxcmd
 
 import (
 	"log"
 	"os"
 )
 
-// ファイル1の内容を取得
 func getSourceFile(path string) {
 	f, err := os.Open(path)
 	if err != nil {
@@ -14,7 +13,6 @@ func getSourceFile(path string) {
 	defer f.Close()
 }
 
-// 取得したファイルの中身をもファイル2を作成
 func createDestinationFile(path string) {
 	f, err := os.Create(path)
 	if err != nil {
@@ -25,8 +23,7 @@ func createDestinationFile(path string) {
 
 //
 
-func main() {
-	src, dest := os.Args[1], os.Args[2]
+func Cp(src string, dest string) {
 	getSourceFile(src)
 	createDestinationFile(dest)
 }
