@@ -3,12 +3,11 @@ package models
 import (
 	"crypto/sha1"
 	"database/sql"
-	"fmt"
-	"log"
-
 	"example.com/app/config"
+	"fmt"
 	"github.com/google/uuid"
 	_ "github.com/mattn/go-sqlite3"
+	"log"
 )
 
 var Db *sql.DB
@@ -17,6 +16,7 @@ var err error
 
 const (
 	tableNameUser = "users"
+	tableNameTodo = "todos"
 )
 
 func init() {
@@ -34,14 +34,25 @@ func init() {
 		created_at DATETIME)`, tableNameUser)
 
 	Db.Exec(cmdU)
+
+	cmdT := `CREATE TABLE IF NOT EXISTS todos(
+		id INTEGER PRIMARY KEY AUTOINCREMENT,
+		content TEXT,
+		user_id INTEGER,
+		created_at DATETIME)`
+
+	_, err = Db.Exec(cmdT, tableNameTodo)
+	if err != nil {
+		log.Fatalln(err)
+	}
 }
 
 func createUUID() (uuidobj uuid.UUID) {
 	uuidobj, _ = uuid.NewUUID()
-	return uuidobj 
+	return uuidobj
 }
 
-func Encrypt(plaintext string ) (cryptext string){
+func Encrypt(plaintext string) (cryptext string) {
 	cryptext = fmt.Sprintf("%x", sha1.Sum([]byte(plaintext)))
 	return cryptext
 }

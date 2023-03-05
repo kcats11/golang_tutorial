@@ -1,8 +1,6 @@
 package main
 
 import (
-	"fmt"
-
 	"example.com/app/app/models"
 )
 
@@ -28,16 +26,7 @@ import (
 // }
 
 func main() {
-	// fmt.Println(config.Config.Port)
+	t, _ := models.GetTodo(1)
+	t.DeleteTodo()
 
-	// log.Println("test2")
-
-
-	fmt.Println(models.Db)
-	u := &models.User{}
-	u.Name = "test"
-	u.Email = "test@example.com"
-	u.Password = "pass"
-
-	u.CreateUser()
 }
