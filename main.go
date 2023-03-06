@@ -1,6 +1,8 @@
 package main
 
 import (
+	"fmt"
+
 	"example.com/app/app/models"
 )
 
@@ -26,7 +28,5 @@ import (
 // }
 
 func main() {
-	t, _ := models.GetTodo(1)
-	t.DeleteTodo()
-
+	fmt.Println("command not found")
 }
