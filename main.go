@@ -4,6 +4,7 @@ import (
 	"fmt"
 
 	"example.com/app/app/models"
+	"example.com/app/app/models/controllers"
 )
 
 // func main() {
@@ -28,5 +29,6 @@ import (
 // }
 
 func main() {
-	fmt.Println("command not found")
+	fmt.Println(models.Db)
+	controllers.StartMainServer()
 }
