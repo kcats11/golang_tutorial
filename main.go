@@ -1,7 +1,10 @@
 package main
 
 import (
+	"fmt"
+
 	"example.com/app/app/models"
+	"example.com/app/app/models/controllers"
 )
 
 // func main() {
@@ -26,7 +29,6 @@ import (
 // }
 
 func main() {
-	t, _ := models.GetTodo(1)
-	t.DeleteTodo()
-
+	fmt.Println(models.Db)
+	controllers.StartMainServer()
 }
